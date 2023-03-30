@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Cabinet-Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+}
+
+.modal__container {
+  position: relative;
+  width: 498px;
+  height: 610px;
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.modal__garment-popup-close {
+  background-image: url("../../images/popup-close-icon.svg");
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: calc(4%);
+  left: calc(100% - 40px);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modal__garment-popup-close:hover {
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
+
+.modal__garment-popup-image {
+  width: 100%;
+  margin-top: -23px;
+  width: 498px;
+  height: 498px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal__garment-popup-text {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+  margin-left: 32px;
+}
+
+.modal__garment-popup-weather {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
