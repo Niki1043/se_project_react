@@ -4,7 +4,7 @@ import "./Header.css";
 import headerLogo from "../../images/headerlogo.svg";
 import headerUserAvatar from "../../images/avatar.svg";
 
-const Header = ({ cityName, onCreateModal }) => {
+const Header = ({ cityName, onAddButtonClick }) => {
   //console.log("Header");
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -23,7 +23,7 @@ const Header = ({ cityName, onCreateModal }) => {
         <button
           className="header__add-button"
           type="button"
-          onClick={onCreateModal}
+          onClick={onAddButtonClick}
         >
           + Add Clothes
         </button>

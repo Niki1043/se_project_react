@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Cabinet-Grotesk";
-  src: url("../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
-    url("../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
 }
 
 /* .modal__label {

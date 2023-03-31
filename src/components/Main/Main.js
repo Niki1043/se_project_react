@@ -3,10 +3,10 @@ import React from "react";
 import { defaultClothingItems } from "../../utils/constants";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { useMemo } from "react";
+//import { useMemo } from "react";
 
 function Main({ weatherTemp, onSelectCard }) {
-  const weatherType = useMemo(() => {
+  const getWeatherType = () => {
     if (weatherTemp >= 86) {
       return "hot";
     } else if (weatherTemp >= 66 && weatherTemp <= 85) {
@@ -14,7 +14,9 @@ function Main({ weatherTemp, onSelectCard }) {
     } else if (weatherTemp <= 65) {
       return "cold";
     }
-  }, [weatherTemp]);
+  };
+
+  const weatherType = getWeatherType();
   //console.log(weatherTemp);
   //console.log(weatherType);
 
@@ -27,7 +29,7 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
     <main className="main">
-      <WeatherCard day={false} type="rain" weatherTemp={weatherTemp} />
+      <WeatherCard day={true} type="rain" weatherTemp={weatherTemp} />
       <section className="main__card-section" id="card-section">
         <p className="main__weather-text">
           Today is {weatherTemp}°F / You may want to wear:

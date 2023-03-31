@@ -7,7 +7,7 @@
 @import url(../src/components/Main/Main.css);
 @import url(../src/components/ModalWithForm/ModalWithForm.css);
 @import url(../src/components/WeatherCard/WeatherCard.css);
-@import url(../src/components/App.css);
+@import url(../src/components/App/App.css);
 /* ------------------------------------ */
 /* body {
   margin: 0;

@@ -1,12 +1,12 @@
 //import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
-import ItemModal from "./ItemModal/ItemModal";
-import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
+import ItemModal from "../ItemModal/ItemModal";
+import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 
 function App() {
   //const weatherTemp = 30;
@@ -29,20 +29,24 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      //console.log(data);
-      const cityname = data && data.name;
-      setCity(cityname);
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        //console.log(data);
+        const cityname = data && data.name;
+        setCity(cityname);
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   //console.log(temp);
   //console.log(city);
 
   return (
     <div>
-      <Header cityName={city} onCreateModal={handleCreateModal} />
+      <Header cityName={city} onAddButtonClick={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
