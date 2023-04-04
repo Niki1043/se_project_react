@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Cabinet-Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+}
+
+.switch {
+  display: flex;
+}
+
+.switch__input {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch__label {
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: space-between; */
+  cursor: pointer;
+  width: 56px;
+  height: 28px;
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.2s;
+  border: solid 2px #7e7e7e;
+}
+
+.switch__label .switch__button {
+  /* content: ""; */
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
+  transition: 0.2s;
+  background: #000;
+}
+
+.switch__input:checked + .switch__label .switch__button {
+  left: calc(100%);
+  transform: translateX(-100%);
+}
+
+.switch__label:active .switch_button {
+  width: 60px;
+}
+
+.switch__states {
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.switch__f {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+}
+
+.switch__c {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}

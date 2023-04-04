@@ -3,6 +3,7 @@ import React from "react";
 import "./Header.css";
 import headerLogo from "../../images/headerlogo.svg";
 import headerUserAvatar from "../../images/avatar.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const Header = ({ cityName, onAddButtonClick }) => {
   //console.log("Header");
@@ -20,6 +21,7 @@ const Header = ({ cityName, onAddButtonClick }) => {
         </p>
       </div>
       <div className="header__userinfo-container">
+        <ToggleSwitch />
         <button
           className="header__add-button"
           type="button"

@@ -20,10 +20,15 @@ export const getForecastWeather = () => {
 
 export const parseWeatherData = (data) => {
   //console.log(data);
-  const main = data.main;
-  const temperature = main && main.temp;
-  //const cityname = data && data.name;
-  //console.log(cityname);
-  //console.log(Math.ceil(temperature));
-  return Math.ceil(temperature);
+  const weather = { temp: {} };
+  weather.temp.F = `${Math.round(data.main.temp)}°F`;
+  weather.temp.C = `${Math.round(((data.main.temp - 32) * 5) / 9)}°C`;
+  return weather;
+  // const main = data.main;
+  // //Farenheght
+  // const temperature = main && main.temp;
+  // //const cityname = data && data.name;
+  // //console.log(cityname);
+  // //console.log(Math.ceil(temperature));
+  // return Math.ceil(temperature);
 };
