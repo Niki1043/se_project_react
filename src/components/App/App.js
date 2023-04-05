@@ -7,13 +7,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
   //const weatherTemp = 30;
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(); //was (0)
+  const [temp, setTemp] = useState(0); //was (0)
   const [city, setCity] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -43,9 +43,9 @@ function App() {
         const cityname = data && data.name;
         setCity(cityname);
         const temperature = parseWeatherData(data);
-        console.log(temperature); //up to here logs as an object correctly
+        //console.log(temperature); //up to here logs as an object correctly
         setTemp(temperature);
-        console.log(setTemp(temperature)); //returns undefined
+        //console.log(setTemp(temperature)); //returns undefined
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +53,8 @@ function App() {
   }, []);
   //console.log(temperature);
   //console.log(city);
-
+  //console.log(temp);//logs with values and units
+  //console.log(weatherTemp);
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
