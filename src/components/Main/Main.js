@@ -7,8 +7,8 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function Main({ weatherTemp, onSelectCard }) {
-  const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTempUnit);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  //console.log(currentTemperatureUnit);
 
   const getWeatherType = () => {
     if (weatherTemp >= 86) {
@@ -21,28 +21,28 @@ function Main({ weatherTemp, onSelectCard }) {
   };
 
   const weatherType = getWeatherType();
-  console.log(weatherTemp); //returns weather values with temp object
-  console.log(weatherTemp.temp); //temp object
-  //console.log(weatherTemp.temp[currentTempUnit]); //undefined
-  //console.log(weatherType);
+  //console.log(weatherTemp); //returns weather values with temp object
+  //console.log(weatherTemp.temp); //temp object
+  //console.log(weatherTemp.temp[currentTemperatureUnit]); //undefined
+  //console.log(weatherType); //get weather type return value
 
   const filteredCards = defaultClothingItems.filter((item) => {
-    //console.log(item._id);
+    //console.log(item); //object for each item
     return item.weather.toLowerCase() === weatherType;
   });
 
-  //console.log(filteredCards);
+  console.log(filteredCards); //returns objects in array for weather temp bracket set above
+  // const test = filteredCards.map((item) => {
+  //   return console.log(item); //returns all matching weathertype objexts as individual objects
+  // });
+
   return (
     <main className="main">
-      <WeatherCard
-        day={true}
-        type="rain"
-        weatherTemp={weatherTemp && weatherTemp.temp[currentTempUnit]}
-      />
+      <WeatherCard day={true} type="rain" weatherTemp={weatherTemp} />
       <section className="main__card-section" id="card-section">
         <p className="main__weather-text">
-          Today is {weatherTemp && weatherTemp.temp[currentTempUnit]} / You may
-          want to wear:
+          Today is {weatherTemp && weatherTemp.temp[currentTemperatureUnit]} /
+          You may want to wear:
         </p>
         <div className="main__card-items">
           {filteredCards.map((item) => (
