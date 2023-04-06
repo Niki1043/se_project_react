@@ -4,10 +4,18 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ItemModal from "../ItemModal/ItemModal";
-import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import {
+  getForecastWeather,
+  parseWeatherData,
+  getWeatherCard,
+} from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import Profile from "../Profile/Profile";
+import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
   //const weatherTemp = 30;
@@ -15,7 +23,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0); //was (0)
   const [city, setCity] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState();
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [cards, setCards] = useState(defaultClothingItems);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -36,6 +46,8 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
+  const handleAddItemSubmit = () => {};
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -43,9 +55,9 @@ function App() {
         const cityname = data && data.name;
         setCity(cityname);
         const temperature = parseWeatherData(data);
-        //console.log(temperature); //up to here logs as an object correctly
         setTemp(temperature);
-        //console.log(setTemp(temperature)); //returns undefined
+        const weatherCardInfo = getWeatherCard(data);
+        setWeatherInfo(weatherCardInfo);
       })
       .catch((err) => {
         console.log(err);
@@ -56,77 +68,44 @@ function App() {
   //console.log(temp);//logs with values and units
   //console.log(weatherTemp);
   return (
-    <div>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header cityName={city} onAddButtonClick={handleCreateModal} />
-        <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
-        <Footer />
-        {activeModal === "create" && (
-          <ModalWithForm title="New garment" onClose={handleCloseModal}>
-            <label className="modal__label" id="modal-namelabel">
-              Name
-              <input
-                className="modal__input"
-                id="modal-name"
-                type="text"
-                name="name"
-                minLength="1"
-                maxLength="30"
-                placeholder="Name"
-                required
+    <BrowserRouter>
+      <div>
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header cityName={city} onAddButtonClick={handleCreateModal} />
+          <Switch>
+            <Route path="/profile">
+              <Profile
+                cards={cards}
+                handleAddClick={handleCreateModal}
+                onSelectCard={handleSelectedCard}
               />
-            </label>
-            <label className="modal__label" id="modal-imagelabel">
-              Image
-              <input
-                className="modal__input"
-                id="modal-link"
-                type="url"
-                name="link"
-                placeholder="Image URL"
-                required
+            </Route>
+            <Route exact path="/">
+              <Main
+                cards={cards}
+                weatherTemp={temp}
+                onSelectCard={handleSelectedCard}
+                weatherCard={weatherInfo}
               />
-            </label>
-            <p className="modal__weather-prompter">Select the Weather type:</p>
-            <div className="modal__radio-block">
-              <div className="modal__radio-buttons">
-                <input
-                  className="modal__radio-button"
-                  type="radio"
-                  id="hot"
-                  value="hot"
-                />
-                <label className="modal__radio-description">Hot</label>
-              </div>
-              <div className="modal__radio-buttons">
-                <input
-                  className="modal__radio-button"
-                  type="radio"
-                  id="warm"
-                  value="warm"
-                />
-                <label className="modal__radio-description">Warm</label>
-              </div>
-              <div className="modal__radio-buttons">
-                <input
-                  className="modal__radio-button"
-                  type="radio"
-                  id="cold"
-                  value="cold"
-                />
-                <label className="modal__radio-description">Cold</label>
-              </div>
-            </div>
-          </ModalWithForm>
-        )}
+            </Route>
+          </Switch>
+          <Footer />
+          {activeModal === "create" && (
+            <AddItemModal
+              isOpen={activeModal === "create"}
+              onAddItem={handleAddItemSubmit}
+              onClose={handleCloseModal}
+            />
+          )}
 
-        {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </div>
+          {activeModal === "preview" && (
+            <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          )}
+        </CurrentTemperatureUnitContext.Provider>
+      </div>
+    </BrowserRouter>
   );
 }
 

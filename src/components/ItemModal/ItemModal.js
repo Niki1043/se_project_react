@@ -22,6 +22,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
           <div className="modal__garment-popup-weather">
             Weather type: {selectedCard.weather}
           </div>
+          <button type="button">Delete item</button>
         </div>
       </div>
     </div>

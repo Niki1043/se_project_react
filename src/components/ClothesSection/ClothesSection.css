@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Cabinet-Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+}
+
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 330px;
+  margin-top: -40px;
+}
+
+.clothes-section__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.clothes-section__header-text {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.clothes-section__add-button {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.clothes-section__add-button:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.clothes-section__cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

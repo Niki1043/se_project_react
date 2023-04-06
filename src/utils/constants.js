@@ -1,3 +1,39 @@
+//Import Images to adjust getWeatherCard
+//Day
+import dayCloudy from "../images/day/cloudy.svg";
+import dayFog from "../images/day/fog.svg";
+import dayRain from "../images/day/rain.svg";
+import daySnow from "../images/day/snow.svg";
+import dayStorm from "../images/day/storm.svg";
+import daySunny from "../images/day/sunny.svg";
+
+//Night
+import nightCloudy from "../images/night/cloudy.svg";
+import nightFog from "../images/night/fog.svg";
+import nightRain from "../images/night/rain.svg";
+import nightSnow from "../images/night/snow.svg";
+import nightStorm from "../images/night/storm.svg";
+import nightSunny from "../images/night/sunny.svg";
+
+//Export Images for getWeatherCard
+export const dayWeatherCards = {
+  cloudy: dayCloudy,
+  fog: dayFog,
+  rain: dayRain,
+  snow: daySnow,
+  storm: dayStorm,
+  sunny: daySunny,
+};
+
+export const nightWeatherCards = {
+  cloudy: nightCloudy,
+  fog: nightFog,
+  rain: nightRain,
+  snow: nightSnow,
+  storm: nightStorm,
+  sunny: nightSunny,
+};
+
 export const defaultClothingItems = [
   {
     _id: 0,

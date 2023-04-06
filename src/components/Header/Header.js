@@ -1,5 +1,6 @@
 //Header Component
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import headerLogo from "../../images/headerlogo.svg";
 import headerUserAvatar from "../../images/avatar.svg";
@@ -15,7 +16,9 @@ const Header = ({ cityName, onAddButtonClick }) => {
   return (
     <header className="header">
       <div className="header__info-container">
-        <img className="header__logo" src={headerLogo} alt="logo" />
+        <Link className="header__logo-link" to="/">
+          <img className="header__logo" src={headerLogo} alt="logo" />
+        </Link>
         <p className="header__date-city">
           {currentDate}, {cityName}
         </p>
@@ -29,12 +32,14 @@ const Header = ({ cityName, onAddButtonClick }) => {
         >
           + Add Clothes
         </button>
-        <div className="header__username">Terrence Tegegne</div>
-        <img
-          className="header__useravatar"
-          src={headerUserAvatar}
-          alt="avatar"
-        />
+        <Link className="header__userinfo-link" to="/profile">
+          <div className="header__username">Terrence Tegegne</div>
+          <img
+            className="header__useravatar"
+            src={headerUserAvatar}
+            alt="avatar"
+          />
+        </Link>
       </div>
     </header>
   );
