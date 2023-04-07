@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+//import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -15,7 +15,8 @@ import {
 } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
-import { defaultClothingItems } from "../../utils/constants";
+//import { defaultClothingItems } from "../../utils/constants";
+import { getClothingItems, addClothingItem, deleteCard } from "../../utils/api";
 
 function App() {
   //const weatherTemp = 30;
@@ -25,7 +26,7 @@ function App() {
   const [city, setCity] = useState("");
   const [weatherInfo, setWeatherInfo] = useState();
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [cards, setCards] = useState(defaultClothingItems);
+  const [cards, setCards] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -46,8 +47,21 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = () => {};
+  const handleAddItemSubmit = (newUserCard) => {
+    addClothingItem(newUserCard)
+      .then((data) => {
+        console.log(data);
+        const newCard = newUserCard;
+        newCard.id = data.id;
+        setCards([newCard, ...cards]);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  //Get and set weather info and city name for header and weather card
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -67,6 +81,19 @@ function App() {
   //console.log(city);
   //console.log(temp);//logs with values and units
   //console.log(weatherTemp);
+
+  //get Clothing info for cards in server
+  useEffect(() => {
+    getClothingItems()
+      .then((data) => {
+        setCards(data);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <BrowserRouter>
       <div>
