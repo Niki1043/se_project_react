@@ -30,9 +30,9 @@ export const addClothingItem = ({ name, imageUrl, weather }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     body: JSON.stringify({
-      name: name,
-      weather: weather,
-      imageUrl: imageUrl,
+      name,
+      imageUrl,
+      weather,
     }),
   }).then((res) => checkResponse(res));
 };

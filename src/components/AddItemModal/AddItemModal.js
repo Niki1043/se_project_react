@@ -46,7 +46,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     // prevent default behavior
     evt.preventDefault();
     // call onAddItem with appropriate arguments - handleAddItemSubmit
-    onAddItem({ itemName, itemImageLink, weatherType });
+    onAddItem(itemName, itemImageLink, weatherType);
   }
 
   return (

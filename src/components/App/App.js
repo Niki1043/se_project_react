@@ -61,7 +61,7 @@ function App() {
   //     });
   // };
 
-  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemSubmit = (name, imageUrl, weather) => {
     addClothingItem({ name, imageUrl, weather })
       .then((newCard) => {
         setCards([newCard, ...cards]);
