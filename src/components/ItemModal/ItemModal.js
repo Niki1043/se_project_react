@@ -18,11 +18,15 @@ const ItemModal = ({ selectedCard, onClose }) => {
           alt={selectedCard.name}
         />
         <div className="modal__garment-popup-text">
-          <div className="modal__garment-popup-name">{selectedCard.name}</div>
-          <div className="modal__garment-popup-weather">
-            Weather type: {selectedCard.weather}
+          <div>
+            <div className="modal__garment-popup-name">{selectedCard.name}</div>
+            <div className="modal__garment-popup-weather">
+              Weather type: {selectedCard.weather}
+            </div>
           </div>
-          <button type="button">Delete item</button>
+          <button type="button" className="modal__delete-button">
+            Delete item
+          </button>
         </div>
       </div>
     </div>

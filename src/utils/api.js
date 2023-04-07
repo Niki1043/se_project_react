@@ -26,13 +26,13 @@ export const getClothingItems = () => {
 //add a new clothing item
 //pass in name, iimageUrl, weather -> used itemName, itemImageLink, weatherType for these in AddItemModal
 //modify handler for adding new item in App ->handleAddItemSubmit
-export const addClothingItem = (card) => {
+export const addClothingItem = ({ name, imageUrl, weather }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     body: JSON.stringify({
-      name: card.name,
-      imageUrl: card.imageUrl,
-      weather: card.weather,
+      name: name,
+      weather: weather,
+      imageUrl: imageUrl,
     }),
   }).then((res) => checkResponse(res));
 };

@@ -41,6 +41,9 @@
 }
 
 .modal__garment-popup-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin: 0;
   font-size: 20px;
   line-height: 1.2;
@@ -55,4 +58,17 @@
 .modal__garment-popup-weather {
   margin-top: 12px;
   margin-bottom: 32px;
+}
+
+.modal__delete-button {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ff4d00;
+  margin-right: 22px;
+}
+
+.modal__delete-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

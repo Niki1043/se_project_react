@@ -26,7 +26,7 @@ function App() {
   const [city, setCity] = useState("");
   const [weatherInfo, setWeatherInfo] = useState();
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]); //was default clothing items
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -47,18 +47,35 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (newUserCard) => {
-    addClothingItem(newUserCard)
-      .then((data) => {
-        console.log(data);
-        const newCard = newUserCard;
-        newCard.id = data.id;
+  // const handleAddItemSubmit = (newUserCard) => {
+  //   addClothingItem(newUserCard)
+  //     .then((data) => {
+  //       console.log(data);
+  //       const newCard = newUserCard;
+  //       newCard.id = data.id;
+  //       setCards([newCard, ...cards]);
+  //       handleCloseModal();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+    addClothingItem({ name, imageUrl, weather })
+      .then((newCard) => {
         setCards([newCard, ...cards]);
         handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleCardDelete = (id) => {
+    deleteCard(id).then(() => {
+      console.log(id);
+    });
   };
 
   //Get and set weather info and city name for header and weather card
@@ -121,7 +138,7 @@ function App() {
           <Footer />
           {activeModal === "create" && (
             <AddItemModal
-              isOpen={activeModal === "create"}
+              // isOpen={activeModal === "create"}
               onAddItem={handleAddItemSubmit}
               onClose={handleCloseModal}
             />

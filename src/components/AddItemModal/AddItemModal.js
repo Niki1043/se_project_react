@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
-const AddItemModal = ({ isOpen, onAddItem, onClose, handleCloseModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   // declare state for each input field (name, imageUrl, weather)
   const [itemName, setItemName] = useState("");
   const [itemImageLink, setItemImageLink] = useState("");
@@ -31,15 +31,22 @@ const AddItemModal = ({ isOpen, onAddItem, onClose, handleCloseModal }) => {
     setWeatherType(evt.target.value);
   }
 
+  // function handleSubmit(evt) {
+  //   // prevent default behavior
+  //   evt.preventDefault();
+  //   // call onAddItem with appropriate arguments
+  //   const newCard = {};
+  //   newCard.name = itemName;
+  //   newCard.imageUrl = itemImageLink;
+  //   newCard.weather = weatherType;
+  //   onAddItem(newCard);
+  // }
+
   function handleSubmit(evt) {
     // prevent default behavior
     evt.preventDefault();
-    // call onAddItem with appropriate arguments
-    const newCard = {};
-    newCard.name = itemName;
-    newCard.imageUrl = itemImageLink;
-    newCard.weather = weatherType;
-    onAddItem(newCard);
+    // call onAddItem with appropriate arguments - handleAddItemSubmit
+    onAddItem({ itemName, itemImageLink, weatherType });
   }
 
   return (
@@ -79,6 +86,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose, handleCloseModal }) => {
           required
         />
       </label>
+      <span className="modal__error" id="modal-link-error"></span>
       <p className="modal__weather-prompter">Select the Weather type:</p>
       <div className="modal__radio-block">
         <div className="modal__radio-buttons">
