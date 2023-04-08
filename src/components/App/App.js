@@ -47,23 +47,10 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  // const handleAddItemSubmit = (newUserCard) => {
-  //   addClothingItem(newUserCard)
-  //     .then((data) => {
-  //       console.log(data);
-  //       const newCard = newUserCard;
-  //       newCard.id = data.id;
-  //       setCards([newCard, ...cards]);
-  //       handleCloseModal();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   const handleAddItemSubmit = (name, imageUrl, weather) => {
     addClothingItem({ name, imageUrl, weather })
       .then((newCard) => {
+        console.log(newCard);
         setCards([newCard, ...cards]);
         handleCloseModal();
       })
@@ -138,7 +125,7 @@ function App() {
           <Footer />
           {activeModal === "create" && (
             <AddItemModal
-              // isOpen={activeModal === "create"}
+              isOpen={activeModal === "create"}
               onAddItem={handleAddItemSubmit}
               onClose={handleCloseModal}
             />

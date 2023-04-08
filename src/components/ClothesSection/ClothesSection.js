@@ -19,7 +19,7 @@ const ClothesSection = ({ cards, handleAddClick, onSelectCard }) => {
       <div className="clothes-section__cards-container">
         {cards.map((card) => {
           return (
-            <ItemCard key={card._id} item={card} onSelectCard={onSelectCard} />
+            <ItemCard key={card.id} item={card} onSelectCard={onSelectCard} />
           );
         })}
       </div>

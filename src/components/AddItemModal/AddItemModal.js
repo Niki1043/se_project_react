@@ -31,23 +31,22 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     setWeatherType(evt.target.value);
   }
 
-  // function handleSubmit(evt) {
-  //   // prevent default behavior
-  //   evt.preventDefault();
-  //   // call onAddItem with appropriate arguments
-  //   const newCard = {};
-  //   newCard.name = itemName;
-  //   newCard.imageUrl = itemImageLink;
-  //   newCard.weather = weatherType;
-  //   onAddItem(newCard);
-  // }
-
   function handleSubmit(evt) {
     // prevent default behavior
     evt.preventDefault();
     // call onAddItem with appropriate arguments - handleAddItemSubmit
-    onAddItem(itemName, itemImageLink, weatherType);
+    const card = {};
+    card.name = itemName;
+    card.imageUrl = itemImageLink;
+    card.weather = weatherType;
+    onAddItem(card);
+    console.log(card); //logs values correctly for input
   }
+
+  //console.log(itemName, itemImageLink, weatherType); logging correctly with handling inputs
+  // console.log(itemName);
+  // console.log(itemImageLink);
+  // console.log(weatherType);
 
   return (
     <ModalWithForm
@@ -95,6 +94,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
             type="radio"
             id="hot"
             value="hot"
+            name="weatherType"
             checked={weatherType === "hot"}
             onChange={handleWeatherTypeChange}
           />
@@ -106,6 +106,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
             type="radio"
             id="warm"
             value="warm"
+            name="weatherType"
             checked={weatherType === "warm"}
             onChange={handleWeatherTypeChange}
           />
@@ -117,6 +118,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
             type="radio"
             id="cold"
             value="cold"
+            name="weatherType"
             checked={weatherType === "cold"}
             onChange={handleWeatherTypeChange}
           />

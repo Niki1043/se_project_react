@@ -26,7 +26,7 @@ function Main({ cards, weatherTemp, onSelectCard, weatherCard }) {
 
   //filteredCards = defaultClothingItems.filter
   const filteredCards = cards.filter((item) => {
-    //console.log(item); //object for each item
+    //console.log(item);
     return item.weather.toLowerCase() === weatherType;
   });
 
