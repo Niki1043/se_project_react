@@ -52,7 +52,7 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather })
       .then((newCard) => {
-        console.log(newCard);
+        //console.log(newCard);
         setCards([newCard, ...cards]);
         handleCloseModal();
       })

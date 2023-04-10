@@ -39,7 +39,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     card.imageUrl = itemImageLink;
     card.weather = weatherType;
     onAddItem(card);
-    console.log(card); //logs values correctly for input
+    //console.log(card); //logs values correctly for input
   }
 
   //console.log(itemName, itemImageLink, weatherType); logging correctly with handling inputs
