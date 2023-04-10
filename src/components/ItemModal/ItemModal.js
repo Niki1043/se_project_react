@@ -2,7 +2,7 @@
 import React from "react";
 import "./ItemModal.css";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, onOpenDeleteModal }) => {
   //console.log('itemmodal')
   return (
     <div className={`modal`}>
@@ -24,7 +24,11 @@ const ItemModal = ({ selectedCard, onClose }) => {
               Weather type: {selectedCard.weather}
             </div>
           </div>
-          <button type="button" className="modal__delete-button">
+          <button
+            type="button"
+            className="modal__delete-button"
+            onClick={onOpenDeleteModal}
+          >
             Delete item
           </button>
         </div>

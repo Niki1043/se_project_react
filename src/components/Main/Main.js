@@ -27,7 +27,7 @@ function Main({ cards, weatherTemp, onSelectCard, weatherCard }) {
   //filteredCards = defaultClothingItems.filter
   const filteredCards = cards.filter((item) => {
     //console.log(item);
-    return item.weather.toLowerCase() === weatherType;
+    return item.weather?.toLowerCase() === weatherType;
   });
 
   //console.log(filteredCards); //returns objects in array for weather temp bracket set above

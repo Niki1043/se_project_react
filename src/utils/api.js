@@ -18,6 +18,9 @@ const checkResponse = (res) => {
 export const getClothingItems = () => {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).then((res) => checkResponse(res));
 };
 
@@ -29,6 +32,9 @@ export const getClothingItems = () => {
 export const addClothingItem = ({ name, imageUrl, weather }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       name,
       imageUrl,
@@ -43,5 +49,8 @@ export const addClothingItem = ({ name, imageUrl, weather }) => {
 export const deleteCard = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).then((res) => checkResponse(res));
 };

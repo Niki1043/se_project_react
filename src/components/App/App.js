@@ -17,6 +17,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import Profile from "../Profile/Profile";
 //import { defaultClothingItems } from "../../utils/constants";
 import { getClothingItems, addClothingItem, deleteCard } from "../../utils/api";
+import CardDeleteModal from "../CardDeleteModal/CardDeleteModal";
 
 function App() {
   //const weatherTemp = 30;
@@ -27,6 +28,7 @@ function App() {
   const [weatherInfo, setWeatherInfo] = useState();
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]); //was default clothing items
+  const [cardDeleteModal, setCardDeleteModal] = useState(false); //delete modal not open on render
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -47,7 +49,7 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (name, imageUrl, weather) => {
+  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather })
       .then((newCard) => {
         console.log(newCard);
@@ -59,10 +61,22 @@ function App() {
       });
   };
 
-  const handleCardDelete = (id) => {
-    deleteCard(id).then(() => {
-      console.log(id);
-    });
+  const handleCardDelete = () => {
+    deleteCard(selectedCard.id)
+      .then(() => {
+        //console.log(selectedCard.id);
+        setCards(cards.filter((item) => item.id !== selectedCard.id));
+        handleCloseModal();
+        setCardDeleteModal(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const openDeleteModal = () => {
+    setCardDeleteModal(true);
+    handleCloseModal();
   };
 
   //Get and set weather info and city name for header and weather card
@@ -132,7 +146,20 @@ function App() {
           )}
 
           {activeModal === "preview" && (
-            <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              onOpenDeleteModal={openDeleteModal}
+            />
+          )}
+          {cardDeleteModal && (
+            <CardDeleteModal
+              onClose={() => {
+                setCardDeleteModal(false);
+              }}
+              handleDelete={handleCardDelete}
+              onCardDeleted={handleCloseModal}
+            />
           )}
         </CurrentTemperatureUnitContext.Provider>
       </div>

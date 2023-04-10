@@ -8,11 +8,11 @@
 @import url(../src/components/ModalWithForm/ModalWithForm.css);
 @import url(../src/components/WeatherCard/WeatherCard.css);
 @import url(../src/components/App/App.css);
-@import url(../src/components/AddItemModal/AddItemModal.css);
 @import url(../src/components/ClothesSection/ClothesSection.css);
 @import url(../src/components/Profile/Profile.css);
 @import url(../src/components/SideBar/SideBar.css);
 @import url(../src/components/ToggleSwitch/ToggleSwitch.css);
+@import url(../src/components/CardDeleteModal/CardDeleteModal.css);
 /* ------------------------------------ */
 /* body {
   margin: 0;
