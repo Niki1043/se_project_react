@@ -1,6 +1,6 @@
-// const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
-const baseUrl = "https://my-json-server.typicode.com/niki1043/se_project_react";
+//const baseUrl = "https://my-json-server.typicode.com/niki1043/se_project_react";
 
 //Check for server response with promise state
 const checkResponse = (res) => {
@@ -31,11 +31,12 @@ export const getClothingItems = () => {
 //add a new clothing item
 //pass in name, iimageUrl, weather -> used itemName, itemImageLink, weatherType for these in AddItemModal
 //modify handler for adding new item in App ->handleAddItemSubmit
-export const addClothingItem = ({ name, imageUrl, weather }) => {
+export const addClothingItem = ({ name, imageUrl, weather, token }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -48,11 +49,12 @@ export const addClothingItem = ({ name, imageUrl, weather }) => {
 //DELETE
 // DELETE https://localhost:3001/items/:id
 //Create handler in App to remove item
-export const deleteCard = (id) => {
+export const deleteCard = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then((res) => checkResponse(res));
 };

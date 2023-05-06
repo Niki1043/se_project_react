@@ -96,3 +96,37 @@
   width: 40px;
   height: 40px;
 }
+
+.header__signup-button {
+  gap: 20px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.header__signup-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.header__login-button {
+  gap: 20px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.header__login-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

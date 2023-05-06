@@ -1,9 +1,11 @@
 //All clothing items from current app state
-import React from "react";
+import React, { useContext } from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ cards, handleAddClick, onSelectCard }) => {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">

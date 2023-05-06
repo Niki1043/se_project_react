@@ -92,3 +92,27 @@
   opacity: 0.3;
   transition: opacity 0.2s linear;
 }
+
+.modal__switchlink {
+  width: 85px;
+  height: 36px;
+  margin: 0;
+  margin-left: 140px;
+  padding: 0;
+  border: none;
+  background-color: white;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: center;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.modal__switchlink:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
