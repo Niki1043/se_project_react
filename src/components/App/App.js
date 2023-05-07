@@ -74,7 +74,7 @@ function App() {
   const handleCardDelete = () => {
     deleteCard(selectedCard.id, token)
       .then(() => {
-        //console.log(selectedCard.id);
+        console.log(selectedCard.id);
         setCards(cards.filter((item) => item.id !== selectedCard.id));
         handleCloseModal();
         setCardDeleteModal(false);
@@ -106,6 +106,7 @@ function App() {
         if (res && res.token) {
           localStorage.setItem("jwt", res.token);
           checkToken(res.token);
+          return res;
         } else {
           return { message: "Error: Invalid credentials entered" };
         }

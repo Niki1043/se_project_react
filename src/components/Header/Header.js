@@ -19,8 +19,8 @@ const Header = ({
   // console.log(currentUser);
   // const currentUserData = currentUser.data;
   // console.log(currentUserData);
-  const currentUserName = currentUser.data.name;
-  const currentUserAvatar = currentUser.data.avatar;
+  const currentUserName = currentUser?.data?.name;
+  const currentUserAvatar = currentUser?.data?.avatar;
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
