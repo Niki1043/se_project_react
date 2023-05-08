@@ -22,6 +22,8 @@ import {
   addClothingItem,
   deleteCard,
   editProfile,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import CardDeleteModal from "../CardDeleteModal/CardDeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -148,6 +150,8 @@ function App() {
   const handleEditProfile = ({ name, avatarUrl }) => {
     const currentToken = localStorage.getItem("jwt");
     console.log(currentToken);
+    // console.log(currentUser?.data?.name);
+    // console.log(currentUser?.data?.avatar);
     editProfile({ name, avatarUrl, currentToken })
       .then((res) => {
         return res;
@@ -156,13 +160,34 @@ function App() {
       .then((res) => {
         console.log(res);
         setCurrentUser(res);
-        setIsLoggedIn(true);
         handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
         console.error(err);
       });
+  };
+
+  const handleLikeClick = ({ id, isLiked, user }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is now liked
+    isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        addCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setCards((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        removeCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setCards((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   //Server Requests/useEffect Hooks
@@ -240,6 +265,7 @@ function App() {
                   onSelectCard={handleSelectedCard}
                   userLoggedIn={isLoggedIn}
                   onEditProfile={openEditModal}
+                  onCardLike={handleLikeClick}
                 />
               </ProtectedRoute>
               <Route exact path="/">
@@ -248,6 +274,7 @@ function App() {
                   weatherTemp={temp}
                   onSelectCard={handleSelectedCard}
                   weatherCard={weatherInfo}
+                  onCardLike={handleLikeClick}
                 />
               </Route>
             </Switch>

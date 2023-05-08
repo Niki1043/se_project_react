@@ -6,7 +6,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ cards, weatherTemp, onSelectCard, weatherCard }) {
+function Main({ cards, weatherTemp, onSelectCard, weatherCard, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   //console.log(currentTemperatureUnit);
 
@@ -42,7 +42,12 @@ function Main({ cards, weatherTemp, onSelectCard, weatherCard }) {
         <div className="main__card-items">
           {Array.isArray(filteredCards) &&
             filteredCards.map((item) => (
-              <ItemCard key={item.id} item={item} onSelectCard={onSelectCard} />
+              <ItemCard
+                key={item.id}
+                item={item}
+                onSelectCard={onSelectCard}
+                onLike={onCardLike}
+              />
             ))}
         </div>
       </section>

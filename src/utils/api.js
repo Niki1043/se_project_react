@@ -75,3 +75,29 @@ export const editProfile = ({ name, avatarUrl, token }) => {
     }),
   }).then((res) => checkResponse(res));
 };
+
+//PUT
+//PUT https://localhost:3001/items/id/likes
+//handleCardLike handler in App
+export const addCardLike = (id, user, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => checkResponse(res));
+};
+
+//DELETE
+//DELETE https://localhost:3001/items/id/likes
+//handleCardLike handler in App
+export const removeCardLike = (id, user, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => checkResponse(res));
+};

@@ -4,7 +4,13 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ cards, handleAddClick, onSelectCard, onEditProfile }) {
+function Profile({
+  cards,
+  handleAddClick,
+  onSelectCard,
+  onEditProfile,
+  onCardLike,
+}) {
   return (
     <div className="profile">
       <SideBar handleEditProfile={onEditProfile} />
@@ -12,6 +18,7 @@ function Profile({ cards, handleAddClick, onSelectCard, onEditProfile }) {
         cards={cards}
         onClick={handleAddClick}
         onSelectCard={onSelectCard}
+        onCardLike={onCardLike}
       />
     </div>
   );

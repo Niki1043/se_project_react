@@ -1,7 +1,7 @@
 //Current user's username and avatar hardcoded state
 import React, { useContext } from "react";
 import "./SideBar.css";
-import headerUserAvatar from "../../images/avatar.svg";
+//import headerUserAvatar from "../../images/avatar.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const SideBar = ({ handleEditProfile }) => {
