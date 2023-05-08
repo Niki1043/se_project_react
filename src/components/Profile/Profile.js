@@ -4,10 +4,10 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ cards, handleAddClick, onSelectCard }) {
+function Profile({ cards, handleAddClick, onSelectCard, onEditProfile }) {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar handleEditProfile={onEditProfile} />
       <ClothesSection
         cards={cards}
         onClick={handleAddClick}

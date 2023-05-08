@@ -8,8 +8,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  /* margin-left: 40px; */
-  /* margin-top: 23px; */
 }
 
 .sidebar__useravatar {
@@ -26,4 +24,23 @@
   font-weight: 700;
   font-style: normal;
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.sidebar__edit-profile-button {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  border: none;
+  background-color: #ffff;
+  cursor: pointer;
+}
+
+.sidebar__edit-profile-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

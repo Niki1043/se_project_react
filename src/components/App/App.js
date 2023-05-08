@@ -17,11 +17,17 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Profile from "../Profile/Profile";
 import { userSignUp, userSignIn, checkToken } from "../../utils/auth";
-import { getClothingItems, addClothingItem, deleteCard } from "../../utils/api";
+import {
+  getClothingItems,
+  addClothingItem,
+  deleteCard,
+  editProfile,
+} from "../../utils/api";
 import CardDeleteModal from "../CardDeleteModal/CardDeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   //Set Default useStates
@@ -35,6 +41,7 @@ function App() {
   const [cardDeleteModal, setCardDeleteModal] = useState(false); //delete modal not open on render
   const [userLogInModal, setUserLogInModal] = useState(false);
   const [userRegisterModal, setUserRegisterModal] = useState(false);
+  const [userEditProfileModal, setUserEditProfileModal] = useState(false);
   const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -72,10 +79,10 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    deleteCard(selectedCard.id, token)
+    deleteCard(selectedCard._id, token)
       .then(() => {
-        console.log(selectedCard.id);
-        setCards(cards.filter((item) => item.id !== selectedCard.id));
+        //console.log(selectedCard._id);
+        setCards(cards.filter((item) => item._id !== selectedCard._id));
         handleCloseModal();
         setCardDeleteModal(false);
       })
@@ -99,6 +106,11 @@ function App() {
     handleCloseModal();
   };
 
+  const openEditModal = () => {
+    setUserEditProfileModal(true);
+    handleCloseModal();
+  };
+
   const handleLogin = ({ email, password }) => {
     userSignIn(email, password)
       .then((res) => {
@@ -110,12 +122,12 @@ function App() {
         } else {
           return { message: "Error: Invalid credentials entered" };
         }
-        handleCloseModal();
       })
       .then((res) => {
         //use the response info as current user and set logged in state to true
         setCurrentUser(res);
         setIsLoggedIn(true);
+        handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
@@ -130,6 +142,26 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  const handleEditProfile = ({ name, avatarUrl }) => {
+    const currentToken = localStorage.getItem("jwt");
+    console.log(currentToken);
+    editProfile({ name, avatarUrl, currentToken })
+      .then((res) => {
+        return res;
+        console.log(res);
+      })
+      .then((res) => {
+        console.log(res);
+        setCurrentUser(res);
+        setIsLoggedIn(true);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.error(err);
       });
   };
 
@@ -207,6 +239,7 @@ function App() {
                   handleAddClick={handleCreateModal}
                   onSelectCard={handleSelectedCard}
                   userLoggedIn={isLoggedIn}
+                  onEditProfile={openEditModal}
                 />
               </ProtectedRoute>
               <Route exact path="/">
@@ -263,6 +296,13 @@ function App() {
                   setUserLogInModal(true);
                   setUserRegisterModal(false);
                 }}
+              />
+            )}
+            {userEditProfileModal && (
+              <EditProfileModal
+                isOpen={userEditProfileModal}
+                onClose={handleCloseModal}
+                onEditProfile={handleEditProfile}
               />
             )}
           </CurrentTemperatureUnitContext.Provider>

@@ -19,11 +19,17 @@ const ClothesSection = ({ cards, handleAddClick, onSelectCard }) => {
         </button>
       </div>
       <div className="clothes-section__cards-container">
-        {cards.map((card) => {
-          return (
-            <ItemCard key={card.id} item={card} onSelectCard={onSelectCard} />
-          );
-        })}
+        {cards
+          .filter(
+            (card) =>
+              card.owner ===
+              (currentUser.data === undefined ? "" : currentUser.data._id)
+          )
+          .map((card) => {
+            return (
+              <ItemCard key={card.id} item={card} onSelectCard={onSelectCard} />
+            );
+          })}
       </div>
     </div>
   );

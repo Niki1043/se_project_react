@@ -58,3 +58,20 @@ export const deleteCard = (id, token) => {
     },
   }).then((res) => checkResponse(res));
 };
+
+//PATCH
+//PATCH https://localhost:3001/users/me
+//Create handler in App to edit and update profile info
+export const editProfile = ({ name, avatarUrl, token }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatarUrl,
+    }),
+  }).then((res) => checkResponse(res));
+};
