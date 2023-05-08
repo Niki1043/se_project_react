@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import headerLogo from "../../images/headerlogo.svg";
-import headerUserAvatar from "../../images/avatar.svg";
+// import headerUserAvatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 

@@ -130,3 +130,8 @@
   cursor: pointer;
   opacity: 0.6;
 }
+
+.header__avatar-letter {
+  width: 40px;
+  height: 40px;
+}
