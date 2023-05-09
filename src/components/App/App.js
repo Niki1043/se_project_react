@@ -130,6 +130,7 @@ function App() {
         setCurrentUser(res);
         setIsLoggedIn(true);
         handleCloseModal();
+        setUserLogInModal(false);
       })
       .catch((err) => {
         console.log(err);
@@ -141,6 +142,7 @@ function App() {
       .then((res) => {
         handleLogin({ email, password });
         handleCloseModal();
+        setUserRegisterModal(false);
       })
       .catch((err) => {
         console.log(err);
@@ -152,7 +154,7 @@ function App() {
     console.log(currentToken);
     // console.log(currentUser?.data?.name);
     // console.log(currentUser?.data?.avatar);
-    editProfile({ name, avatarUrl, currentToken })
+    editProfile({ name, avatarUrl, token })
       .then((res) => {
         return res;
         console.log(res);
@@ -161,6 +163,7 @@ function App() {
         console.log(res);
         setCurrentUser(res);
         handleCloseModal();
+        setUserEditProfileModal(false);
       })
       .catch((err) => {
         console.log(err);
