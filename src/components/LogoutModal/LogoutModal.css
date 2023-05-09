@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Cabinet-Grotesk";
+  src: url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("woff"),
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2");
+}
+
+.modal__logout-container {
+  width: 670px;
+  height: 280px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__logout-popup-close {
+  background-image: url("../../images/close-icon.svg");
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: calc(-12%);
+  left: calc(46%);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modal__logout-popup-close:hover {
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
+
+.modal__logout-message {
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.modal__logout-yes {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #ff4d00;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal__logout-yes:hover {
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
+
+.modal__logout-cancel {
+  margin: 0;
+  padding: 0;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal__logout-cancel:hover {
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}

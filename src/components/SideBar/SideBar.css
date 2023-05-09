@@ -44,3 +44,22 @@
   cursor: pointer;
   opacity: 0.6;
 }
+
+.sidebar__edit-logout-button {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  border: none;
+  background-color: #ffff;
+  cursor: pointer;
+}
+
+.sidebar__edit-logout-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

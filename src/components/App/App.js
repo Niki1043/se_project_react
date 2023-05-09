@@ -26,6 +26,7 @@ import {
   removeCardLike,
 } from "../../utils/api";
 import CardDeleteModal from "../CardDeleteModal/CardDeleteModal";
+import LogoutModal from "../LogoutModal/LogoutModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -47,6 +48,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [logoutModal, setLogoutModal] = useState(false);
 
   //Handlers
   const handleCreateModal = () => {
@@ -93,8 +95,19 @@ function App() {
       });
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentUser();
+    localStorage.removeItem("jwt");
+  };
+
   const openDeleteModal = () => {
     setCardDeleteModal(true);
+    handleCloseModal();
+  };
+
+  const openLogoutModal = () => {
+    setLogoutModal(true);
     handleCloseModal();
   };
 
@@ -166,7 +179,7 @@ function App() {
       });
   };
 
-  const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = (id, isLiked, user) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
     isLiked
@@ -266,6 +279,7 @@ function App() {
                   userLoggedIn={isLoggedIn}
                   onEditProfile={openEditModal}
                   onCardLike={handleLikeClick}
+                  onLogOut={openLogoutModal}
                 />
               </ProtectedRoute>
               <Route exact path="/">
@@ -336,6 +350,14 @@ function App() {
                   setUserEditProfileModal(false);
                 }}
                 onEditProfile={handleEditProfile}
+              />
+            )}
+            {logoutModal && (
+              <LogoutModal
+                onClose={() => {
+                  setLogoutModal(false);
+                }}
+                handleLogout={handleLogout}
               />
             )}
           </CurrentTemperatureUnitContext.Provider>

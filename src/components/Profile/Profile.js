@@ -10,10 +10,11 @@ function Profile({
   onSelectCard,
   onEditProfile,
   onCardLike,
+  onLogOut,
 }) {
   return (
     <div className="profile">
-      <SideBar handleEditProfile={onEditProfile} />
+      <SideBar handleEditProfile={onEditProfile} handleLogOut={onLogOut} />
       <ClothesSection
         cards={cards}
         onClick={handleAddClick}

@@ -4,7 +4,7 @@ import "./SideBar.css";
 //import headerUserAvatar from "../../images/avatar.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const SideBar = ({ handleEditProfile }) => {
+const SideBar = ({ handleEditProfile, handleLogOut }) => {
   const currentUser = useContext(CurrentUserContext);
   const currentUserName = currentUser?.data?.name;
   const currentUserAvatar = currentUser?.data?.avatar;
@@ -23,6 +23,13 @@ const SideBar = ({ handleEditProfile }) => {
         onClick={handleEditProfile}
       >
         Change Profile Data
+      </button>
+      <button
+        type="button"
+        className="sidebar__edit-logout-button"
+        onClick={handleLogOut}
+      >
+        Log out
       </button>
     </div>
   );
