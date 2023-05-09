@@ -6,12 +6,14 @@ import filled_heart_icon from "../../images/filledheart-icon.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
-  //console.log(item);
+  //console.log(item._id);
+  const currentUser = useContext(CurrentUserContext);
 
-  // add useContext const
-  //add is liked const
-  // add handle like
-  //addheart images to the card next to the main descriptor text item.name
+  const isLiked = item.likes.some((user) => user._id === currentUser._id);
+
+  const handleLikeClick = () => {
+    onCardLike(item._id, isLiked, currentUser);
+  };
 
   return (
     <div className="card">
@@ -23,7 +25,12 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
       />
       <div className="card__name-container">
         <p className="card__name">{item.name}</p>
-        <img src={heart_icon} alt="like button" className="card__like" />
+        <img
+          src={isLiked ? filled_heart_icon : heart_icon}
+          alt="like button"
+          className="card__like"
+          onClick={handleLikeClick}
+        />
       </div>
     </div>
   );

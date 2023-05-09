@@ -150,24 +150,19 @@ function App() {
   };
 
   const handleEditProfile = ({ name, avatarUrl }) => {
-    const currentToken = localStorage.getItem("jwt");
-    console.log(currentToken);
-    // console.log(currentUser?.data?.name);
-    // console.log(currentUser?.data?.avatar);
     editProfile({ name, avatarUrl, token })
       .then((res) => {
         return res;
         console.log(res);
       })
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setCurrentUser(res);
         handleCloseModal();
         setUserEditProfileModal(false);
       })
       .catch((err) => {
         console.log(err);
-        console.error(err);
       });
   };
 
@@ -176,15 +171,17 @@ function App() {
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-        addCardLike({ id, user }, token)
+        addCardLike(id, user, token)
           .then((updatedCard) => {
+            console.log(id);
+            console.log(user);
             setCards((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
-        removeCardLike({ id, user }, token)
+        removeCardLike(id, user, token)
           .then((updatedCard) => {
             setCards((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
@@ -310,7 +307,9 @@ function App() {
               <LoginModal
                 isOpen={userLogInModal}
                 onUserLogin={handleLogin}
-                onClose={handleCloseModal}
+                onClose={() => {
+                  setUserLogInModal(false);
+                }}
                 switchToRegisterModal={() => {
                   setUserLogInModal(false);
                   setUserRegisterModal(true);
@@ -321,7 +320,9 @@ function App() {
               <RegisterModal
                 isOpen={userRegisterModal}
                 onRegisterUser={handleRegistration}
-                onClose={handleCloseModal}
+                onClose={() => {
+                  setUserRegisterModal(false);
+                }}
                 switchToLoginModal={() => {
                   setUserLogInModal(true);
                   setUserRegisterModal(false);
@@ -331,7 +332,9 @@ function App() {
             {userEditProfileModal && (
               <EditProfileModal
                 isOpen={userEditProfileModal}
-                onClose={handleCloseModal}
+                onClose={() => {
+                  setUserEditProfileModal(false);
+                }}
                 onEditProfile={handleEditProfile}
               />
             )}
