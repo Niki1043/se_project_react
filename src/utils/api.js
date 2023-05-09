@@ -62,7 +62,7 @@ export const deleteCard = (id, token) => {
 //PATCH
 //PATCH https://localhost:3001/users/me
 //Create handler in App to edit and update profile info
-export const editProfile = ({ name, avatarUrl, token }) => {
+export const editProfile = ({ name, avatar, token }) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -71,7 +71,7 @@ export const editProfile = ({ name, avatarUrl, token }) => {
     },
     body: JSON.stringify({
       name,
-      avatarUrl,
+      avatar,
     }),
   }).then((res) => checkResponse(res));
 };

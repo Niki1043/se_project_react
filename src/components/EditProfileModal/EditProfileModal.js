@@ -7,6 +7,7 @@ const EditProfileModal = ({ isOpen, onClose, onEditProfile }) => {
   const currentUser = useContext(CurrentUserContext);
   const currentUserName = currentUser?.data?.name;
   const currentUserAvatar = currentUser?.data?.avatar;
+
   // declare state for each input field (email,password,name,avatarUrl)
   const [userName, setUserName] = useState("");
   const [userAvatar, setUserAvatar] = useState("");

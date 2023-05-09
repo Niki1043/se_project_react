@@ -11,12 +11,14 @@ const SideBar = ({ handleEditProfile, handleLogOut }) => {
 
   return (
     <div className="sidebar">
-      <img
-        className="sidebar__useravatar"
-        src={currentUserAvatar}
-        alt="avatar"
-      />
-      <div className="sidebar__username">{currentUserName}</div>
+      <div className="sidebar__profileinfo">
+        <img
+          className="sidebar__useravatar"
+          src={currentUserAvatar}
+          alt="avatar"
+        />
+        <div className="sidebar__username">{currentUserName}</div>
+      </div>
       <button
         type="button"
         className="sidebar__edit-profile-button"

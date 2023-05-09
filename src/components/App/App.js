@@ -162,8 +162,8 @@ function App() {
       });
   };
 
-  const handleEditProfile = ({ name, avatarUrl }) => {
-    editProfile({ name, avatarUrl, token })
+  const handleEditProfile = ({ name, avatar }) => {
+    editProfile({ name, avatar, token })
       .then((res) => {
         return res;
         console.log(res);
