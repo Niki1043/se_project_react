@@ -76,7 +76,7 @@ const LoginModal = ({
           required
         />
       </label>
-      <p className="modal__switchlink" onClick={switchToRegisterModal}>
+      <p className="modal__switchlink-login" onClick={switchToRegisterModal}>
         or Register
       </p>
     </ModalWithForm>

@@ -117,7 +117,7 @@ const RegisterModal = ({
           onChange={handleUserAvatarLinkChange}
         />
       </label>
-      <div className="modal__switchlink" onClick={switchToLoginModal}>
+      <div className="modal__switchlink-register" onClick={switchToLoginModal}>
         or Log In
       </div>
     </ModalWithForm>
