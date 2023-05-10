@@ -61,7 +61,7 @@ const Header = ({
                 />
               ) : (
                 <div className="header__useravatar-letter">
-                  {currentUserName[0]}
+                  {currentUserName?.[0]}
                 </div>
               )}
             </Link>

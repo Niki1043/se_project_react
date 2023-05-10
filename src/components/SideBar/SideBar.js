@@ -20,7 +20,9 @@ const SideBar = ({ handleEditProfile, handleLogOut }) => {
             alt="avatar"
           />
         ) : (
-          <div className="sidebar__useravatar-letter">{currentUserName[0]}</div>
+          <div className="sidebar__useravatar-letter">
+            {currentUserName?.[0]}
+          </div>
         )}
         <div className="sidebar__username">{currentUserName}</div>
       </div>
