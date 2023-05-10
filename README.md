@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Backend Repository
+
+The backend Express.js repository is available [here](https://github.com/Niki1043/se_project_express).
+
 ## Available Scripts
 
 In the project directory, you can run:

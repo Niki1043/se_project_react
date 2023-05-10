@@ -22,7 +22,8 @@ const Header = ({
   const currentUserAvatar = currentUser?.data?.avatar;
   // const currentUserAvatar = null;
   // const firstletter = currentUserName[0];
-  console.log(currentUserName);
+  // console.log(typeof currentUserName[0]);
+  // console.log(firstletter);
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
