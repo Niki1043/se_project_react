@@ -33,7 +33,7 @@ const ClothesSection = ({
           .map((card) => {
             return (
               <ItemCard
-                key={card.id}
+                key={card._id}
                 item={card}
                 onSelectCard={onSelectCard}
                 onCardLike={onCardLike}

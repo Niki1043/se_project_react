@@ -43,7 +43,7 @@ function Main({ cards, weatherTemp, onSelectCard, weatherCard, onCardLike }) {
           {Array.isArray(filteredCards) &&
             filteredCards.map((item) => (
               <ItemCard
-                key={item.id}
+                key={item._id}
                 item={item}
                 onSelectCard={onSelectCard}
                 onCardLike={onCardLike}
