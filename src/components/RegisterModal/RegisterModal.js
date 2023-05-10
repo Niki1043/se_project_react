@@ -115,13 +115,11 @@ const RegisterModal = ({
           placeholder="Avatar URL"
           value={userAvatarLink}
           onChange={handleUserAvatarLinkChange}
-          required
         />
       </label>
-      <span className="modal__error" id="modal-link-error"></span>
-      <p className="modal__switchlink" onClick={switchToLoginModal}>
+      <div className="modal__switchlink" onClick={switchToLoginModal}>
         or Log In
-      </p>
+      </div>
     </ModalWithForm>
   );
 };

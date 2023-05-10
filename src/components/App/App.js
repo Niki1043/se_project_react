@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 //import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import ItemModal from "../ItemModal/ItemModal";
 import {
   getForecastWeather,
@@ -45,10 +45,12 @@ function App() {
   const [userLogInModal, setUserLogInModal] = useState(false);
   const [userRegisterModal, setUserRegisterModal] = useState(false);
   const [userEditProfileModal, setUserEditProfileModal] = useState(false);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
   const [token, setToken] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
+
+  const history = useHistory();
 
   //Handlers
   const handleCreateModal = () => {
@@ -97,8 +99,10 @@ function App() {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setCurrentUser();
+    setCurrentUser({});
     localStorage.removeItem("jwt");
+    setLogoutModal(false);
+    // history.push("/");
   };
 
   const openDeleteModal = () => {
@@ -184,20 +188,17 @@ function App() {
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-        addCardLike(id, user, token)
-          .then((updatedCard) => {
-            console.log(id);
-            console.log(user);
+        removeCardLike(id, user, token)
+          .then((res) => {
             setCards((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? res.data : c))
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        removeCardLike(id, user, token)
-          .then((updatedCard) => {
+      : addCardLike(id, user, token)
+          .then((res) => {
             setCards((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? res.data : c))
             );
           })
           .catch((err) => console.log(err));

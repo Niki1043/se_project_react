@@ -97,6 +97,22 @@
   height: 40px;
 }
 
+.header__useravatar-letter {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  background: #fff;
+  border: 3px solid #000;
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
 .header__signup-button {
   gap: 20px;
   background-color: #fff;
@@ -129,9 +145,4 @@
 .header__login-button:hover {
   cursor: pointer;
   opacity: 0.6;
-}
-
-.header__avatar-letter {
-  width: 40px;
-  height: 40px;
 }

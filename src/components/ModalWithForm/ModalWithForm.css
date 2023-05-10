@@ -94,10 +94,12 @@
 }
 
 .modal__switchlink {
+  display: flex;
+  position: relative;
   width: 85px;
   height: 36px;
-  margin: 0;
-  margin-left: 140px;
+  margin-top: -40px;
+  margin-left: 100px;
   padding: 0;
   border: none;
   background-color: white;

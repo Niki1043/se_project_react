@@ -65,7 +65,7 @@ const EditProfileModal = ({ isOpen, onClose, onEditProfile }) => {
         />
       </label>
       <label className="modal__label" id="modal-imagelabel">
-        Avatar*
+        Avatar
         <input
           className="modal__input"
           id="modal-link"
@@ -74,10 +74,8 @@ const EditProfileModal = ({ isOpen, onClose, onEditProfile }) => {
           placeholder="Avatar URL"
           value={userAvatar}
           onChange={handleUserAvatarChange}
-          required
         />
       </label>
-      <span className="modal__error" id="modal-link-error"></span>
     </ModalWithForm>
   );
 };

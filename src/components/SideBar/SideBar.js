@@ -8,15 +8,20 @@ const SideBar = ({ handleEditProfile, handleLogOut }) => {
   const currentUser = useContext(CurrentUserContext);
   const currentUserName = currentUser?.data?.name;
   const currentUserAvatar = currentUser?.data?.avatar;
+  // const currentUserAvatar = null;
 
   return (
     <div className="sidebar">
       <div className="sidebar__profileinfo">
-        <img
-          className="sidebar__useravatar"
-          src={currentUserAvatar}
-          alt="avatar"
-        />
+        {currentUserAvatar ? (
+          <img
+            className="sidebar__useravatar"
+            src={currentUserAvatar}
+            alt="avatar"
+          />
+        ) : (
+          <div className="sidebar__useravatar-letter">{currentUserName[0]}</div>
+        )}
         <div className="sidebar__username">{currentUserName}</div>
       </div>
       <button

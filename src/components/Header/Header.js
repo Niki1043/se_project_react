@@ -18,9 +18,11 @@ const Header = ({
   const currentUser = useContext(CurrentUserContext);
   // console.log(currentUser);
   // const currentUserData = currentUser.data;
-  // console.log(currentUserData);
   const currentUserName = currentUser?.data?.name;
   const currentUserAvatar = currentUser?.data?.avatar;
+  // const currentUserAvatar = null;
+  // const firstletter = currentUserName[0];
+  console.log(currentUserName);
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -57,7 +59,9 @@ const Header = ({
                   alt="avatar"
                 />
               ) : (
-                <p className="header__avatar-letter">{currentUserName[0]}</p>
+                <div className="header__useravatar-letter">
+                  {currentUserName[0]}
+                </div>
               )}
             </Link>
           </>
