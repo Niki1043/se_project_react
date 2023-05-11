@@ -6,8 +6,8 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 const ItemModal = ({ selectedCard, onClose, onOpenDeleteModal }) => {
   //console.log('itemmodal')
   const currentUser = useContext(CurrentUserContext);
-  console.log(selectedCard.owner);
-  console.log(currentUser.data._id);
+  // console.log(selectedCard.owner);
+  // console.log(currentUser.data._id);
   // Checking if the current user is the owner of the current clothing item
   const isOwn = selectedCard.owner === currentUser.data._id;
 

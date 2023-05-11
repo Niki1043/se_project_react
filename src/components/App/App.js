@@ -145,10 +145,13 @@ function App() {
       })
       .then((userinfo) => {
         console.log(userinfo.data.name);
+        const name = userinfo.data.name;
         console.log(userinfo.data.avatar);
         //use the response info as current user and set logged in state to true
-        setCurrentUser(userinfo.data);
-        console.log(currentUser);
+        setCurrentUser({
+          name: userinfo.data.name,
+          avatar: userinfo.data.avatar,
+        });
         setIsLoggedIn(true);
         handleCloseModal();
         setUserLogInModal(false);
@@ -157,6 +160,7 @@ function App() {
         console.log(err);
       });
   };
+  console.log(currentUser);
 
   const handleRegistration = ({ name, avatar, email, password }) => {
     userSignUp(name, avatar, email, password)
