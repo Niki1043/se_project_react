@@ -75,8 +75,8 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
-        //console.log(newCard);
-        setCards([newCard, ...cards]);
+        console.log(newCard);
+        setCards([...cards, newCard.data]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -144,6 +144,7 @@ function App() {
         }
       })
       .then((userinfo) => {
+        // console.log(userinfo);
         setCurrentUser({
           data: {
             name: userinfo.data.name,
@@ -153,17 +154,19 @@ function App() {
         setIsLoggedIn(true);
         handleCloseModal();
         setUserLogInModal(false);
+        // need to render userowned cards to profile
       })
       .catch((err) => {
         console.log(err);
       });
   };
   //console.log(currentUser);
+  // console.log(cards);
 
   const handleRegistration = ({ name, avatar, email, password }) => {
     userSignUp(name, avatar, email, password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         handleLogin({ email, password });
         handleCloseModal();
         setUserRegisterModal(false);
