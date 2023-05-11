@@ -17,7 +17,7 @@ const EditProfileModal = ({ isOpen, onClose, onEditProfile }) => {
   useEffect(() => {
     setUserName(currentUserName);
     setUserAvatar(currentUserAvatar);
-  }, [isOpen]);
+  }, [currentUserName, currentUserAvatar]);
 
   // create onChange handlers corresponding to each state variable (for each setXxx)
   function handleUserNameChange(evt) {

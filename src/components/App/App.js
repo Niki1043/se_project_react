@@ -50,7 +50,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   //Handlers
   const handleCreateModal = () => {
@@ -149,12 +149,13 @@ function App() {
           data: {
             name: userinfo.data.name,
             avatar: userinfo.data.avatar,
+            _id: userinfo.data._id,
+            // ...userinfo.data,
           },
         });
         setIsLoggedIn(true);
         handleCloseModal();
         setUserLogInModal(false);
-        // need to render userowned cards to profile
       })
       .catch((err) => {
         console.log(err);
@@ -180,7 +181,6 @@ function App() {
     editProfile({ name, avatar, token })
       .then((res) => {
         return res;
-        console.log(res);
       })
       .then((res) => {
         //console.log(res);
