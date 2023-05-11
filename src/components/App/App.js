@@ -131,25 +131,23 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    //console.log({ email, password });
     userSignIn(email, password)
       .then((res) => {
-        console.log({ email, password }); //read from login input
         //check if successful response and if jwttoken assigned and store and check if token exists already and close modal
         if (res && res.token) {
-          console.log(res); //token only inside res object
+          //token only inside res object
           localStorage.setItem("jwt", res.token);
-          checkToken(res.token);
-          return res;
+          const userinfo = checkToken(res.token);
+          return userinfo;
         } else {
-          return { message: "Error: Invalid credentials entered" };
+          throw { message: "Error: Invalid credentials entered" };
         }
       })
-      .then((res) => {
-        const userset = { email, password }; //full set to update user
-        console.log(userset);
+      .then((userinfo) => {
+        console.log(userinfo.data.name);
+        console.log(userinfo.data.avatar);
         //use the response info as current user and set logged in state to true
-        setCurrentUser(userset);
+        setCurrentUser(userinfo.data);
         console.log(currentUser);
         setIsLoggedIn(true);
         handleCloseModal();
