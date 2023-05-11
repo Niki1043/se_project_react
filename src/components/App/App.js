@@ -131,10 +131,13 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
+    //console.log({ email, password });
     userSignIn(email, password)
       .then((res) => {
+        console.log({ email, password }); //read from login input
         //check if successful response and if jwttoken assigned and store and check if token exists already and close modal
         if (res && res.token) {
+          console.log(res); //token only inside res object
           localStorage.setItem("jwt", res.token);
           checkToken(res.token);
           return res;
@@ -143,8 +146,11 @@ function App() {
         }
       })
       .then((res) => {
+        const userset = { email, password }; //full set to update user
+        console.log(userset);
         //use the response info as current user and set logged in state to true
-        setCurrentUser(res);
+        setCurrentUser(userset);
+        console.log(currentUser);
         setIsLoggedIn(true);
         handleCloseModal();
         setUserLogInModal(false);
@@ -153,10 +159,11 @@ function App() {
         console.log(err);
       });
   };
-  // console.log(currentUser);
+
   const handleRegistration = ({ name, avatar, email, password }) => {
     userSignUp(name, avatar, email, password)
       .then((res) => {
+        console.log(res);
         handleLogin({ email, password });
         handleCloseModal();
         setUserRegisterModal(false);

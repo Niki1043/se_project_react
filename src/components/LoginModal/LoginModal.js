@@ -42,7 +42,7 @@ const LoginModal = ({
     user_login.email = userLoginEmail;
     user_login.password = userLoginPassword;
     onUserLogin(user_login);
-    //console.log(user_login);
+    // console.log(user_login);
   }
 
   // 2 buttons in form: Log in to login, or Register to redirect (added as callback in App.js onClick)
