@@ -12,6 +12,12 @@ const LoginModal = ({
   const [userLoginEmail, setUserLoginEmail] = useState("");
   const [userLoginPassword, setUserLoginPassword] = useState("");
 
+  // // //set login validator
+  // const LoginValidation = (email, password) => {
+  //   return email && password.length >= 2;
+  //   // console.log(LoginValidation);
+  // };
+
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened (isOpen from input)
   useEffect(() => {
@@ -79,6 +85,7 @@ const LoginModal = ({
       <p className="modal__switchlink-login" onClick={switchToRegisterModal}>
         or Register
       </p>
+      <span className="modal__error-login" id="modal-link-error"></span>
     </ModalWithForm>
   );
 };

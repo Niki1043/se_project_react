@@ -153,7 +153,7 @@ function App() {
         console.log(err);
       });
   };
-
+  // console.log(currentUser);
   const handleRegistration = ({ name, avatar, email, password }) => {
     userSignUp(name, avatar, email, password)
       .then((res) => {

@@ -138,3 +138,7 @@
   opacity: 0.6;
   transition: opacity 0.2s linear;
 }
+
+.modal__error-login {
+  color: red;
+}
