@@ -16,7 +16,7 @@ import {
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Profile from "../Profile/Profile";
-import { userSignUp, userSignIn, checkToken } from "../../utils/auth";
+import { signUp, signIn, checkToken } from "../../utils/auth";
 import {
   getClothingItems,
   addClothingItem,
@@ -76,7 +76,7 @@ function App() {
     addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
         console.log(newCard);
-        setCards([...cards, newCard.data]);
+        setCards([...cards, newCard?.data]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -131,26 +131,27 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    userSignIn(email, password)
+    signIn(email, password)
       .then((res) => {
         //check if successful response and if jwttoken assigned and store and check if token exists already and close modal
         if (res && res.token) {
           //token only inside res object
           localStorage.setItem("jwt", res.token);
           const userinfo = checkToken(res.token);
+          //console.log(userinfo);
           return userinfo;
         } else {
           throw { message: "Error: Invalid credentials entered" };
         }
       })
       .then((userinfo) => {
-        // console.log(userinfo);
+        console.log(userinfo.data);
         setCurrentUser({
           data: {
-            name: userinfo.data.name,
-            avatar: userinfo.data.avatar,
-            _id: userinfo.data._id,
-            // ...userinfo.data,
+            name: userinfo?.data?.name,
+            avatar: userinfo?.data?.avatar,
+            _id: userinfo?.data?._id,
+            //...userinfo.data,
           },
         });
         setIsLoggedIn(true);
@@ -165,9 +166,9 @@ function App() {
   // console.log(cards);
 
   const handleRegistration = ({ name, avatar, email, password }) => {
-    userSignUp(name, avatar, email, password)
+    signUp(name, avatar, email, password)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         handleLogin({ email, password });
         handleCloseModal();
         setUserRegisterModal(false);
@@ -236,6 +237,7 @@ function App() {
   useEffect(() => {
     getClothingItems()
       .then((data) => {
+        //console.log(data);
         setCards(data);
         handleCloseModal();
       })
@@ -297,6 +299,7 @@ function App() {
                 <Main
                   cards={cards}
                   weatherTemp={temp}
+                  userLoggedIn={isLoggedIn}
                   onSelectCard={handleSelectedCard}
                   weatherCard={weatherInfo}
                   onCardLike={handleLikeClick}

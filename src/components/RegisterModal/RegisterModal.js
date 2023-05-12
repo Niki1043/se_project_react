@@ -44,13 +44,13 @@ const RegisterModal = ({
     // prevent default behavior
     evt.preventDefault();
     // call onRegisterUser with appropriate arguments - //CHECKE THIShandleAddItemSubmit
-    const new_user = {};
-    new_user.email = userEmail;
-    new_user.password = userPassword;
-    new_user.name = userName;
-    new_user.avatar = userAvatarLink;
-    onRegisterUser(new_user);
-    //console.log(new_user);
+    const newUser = {};
+    newUser.email = userEmail;
+    newUser.password = userPassword;
+    newUser.name = userName;
+    newUser.avatar = userAvatarLink;
+    onRegisterUser(newUser);
+    //console.log(newUser);
   }
 
   // 2 buttons in form: Next to register, or Login to redirect (added as callback in App.js onClick)

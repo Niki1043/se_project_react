@@ -6,10 +6,12 @@ import filled_heart_icon from "../../images/filledheart-icon.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
-  //console.log(item._id);
+  //console.log(item);
   const currentUser = useContext(CurrentUserContext);
 
   const isLiked = item.likes.some((user) => user === currentUser?.data?._id);
+  // console.log(item);
+  // console.log(currentUser?.data?._id);
 
   const handleLikeClick = () => {
     onCardLike(item._id, isLiked, currentUser);

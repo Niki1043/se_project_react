@@ -8,6 +8,7 @@ function Profile({
   cards,
   handleAddClick,
   onSelectCard,
+  userLoggedIn,
   onEditProfile,
   onCardLike,
   onLogOut,
@@ -17,7 +18,7 @@ function Profile({
       <SideBar handleEditProfile={onEditProfile} handleLogOut={onLogOut} />
       <ClothesSection
         cards={cards}
-        onClick={handleAddClick}
+        handleAddClick={handleAddClick}
         onSelectCard={onSelectCard}
         onCardLike={onCardLike}
       />

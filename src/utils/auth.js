@@ -12,7 +12,7 @@ const baseUrl = "http://localhost:3001";
 // };
 
 // /signup for user registration
-export const userSignUp = (name, avatar, email, password) => {
+export const signUp = (name, avatar, email, password) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -23,7 +23,7 @@ export const userSignUp = (name, avatar, email, password) => {
 };
 
 // /signin for user authorization
-export const userSignIn = (email, password) => {
+export const signIn = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {

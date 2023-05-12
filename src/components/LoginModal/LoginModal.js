@@ -38,11 +38,11 @@ const LoginModal = ({
     // prevent default behavior
     evt.preventDefault();
     // call onRegisterUser with appropriate arguments - //CHECKE THIShandleAddItemSubmit
-    const user_login = {};
-    user_login.email = userLoginEmail;
-    user_login.password = userLoginPassword;
-    onUserLogin(user_login);
-    // console.log(user_login);
+    const userLogin = {};
+    userLogin.email = userLoginEmail;
+    userLogin.password = userLoginPassword;
+    onUserLogin(userLogin);
+    // console.log(userLogin);
   }
 
   // 2 buttons in form: Log in to login, or Register to redirect (added as callback in App.js onClick)
