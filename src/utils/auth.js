@@ -1,13 +1,15 @@
+import { checkResponse } from "./api";
+
 const baseUrl = "http://localhost:3001";
 
-//Check for server response with promise state
-const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error ${res.status}`);
-  }
-};
+// //Check for server response with promise state
+// const checkResponse = (res) => {
+//   if (res.ok) {
+//     return res.json();
+//   } else {
+//     return Promise.reject(`Error ${res.status}`);
+//   }
+// };
 
 // /signup for user registration
 export const userSignUp = (name, avatar, email, password) => {

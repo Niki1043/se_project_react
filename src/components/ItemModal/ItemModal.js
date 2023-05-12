@@ -9,7 +9,7 @@ const ItemModal = ({ selectedCard, onClose, onOpenDeleteModal }) => {
   // console.log(selectedCard.owner);
   // console.log(currentUser.data._id);
   // Checking if the current user is the owner of the current clothing item
-  const isOwn = selectedCard.owner === currentUser.data._id;
+  const isOwn = selectedCard.owner === currentUser?.data?._id;
 
   return (
     <div className={`modal`}>

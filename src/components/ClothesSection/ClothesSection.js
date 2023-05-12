@@ -28,7 +28,7 @@ const ClothesSection = ({
           .filter(
             (card) =>
               card.owner ===
-              (currentUser.data === undefined ? "" : currentUser.data._id)
+              (currentUser.data === undefined ? "" : currentUser?.data?._id)
           )
           .map((card) => {
             return (

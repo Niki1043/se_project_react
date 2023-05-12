@@ -1,5 +1,5 @@
 //Item Card Component
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ItemCard.css";
 import heart_icon from "../../images/heart-icon.svg";
 import filled_heart_icon from "../../images/filledheart-icon.svg";
@@ -9,7 +9,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   //console.log(item._id);
   const currentUser = useContext(CurrentUserContext);
 
-  const isLiked = item.likes.some((user) => user._id === currentUser?._id);
+  const isLiked = item.likes.some((user) => user === currentUser?.data?._id);
 
   const handleLikeClick = () => {
     onCardLike(item._id, isLiked, currentUser);
