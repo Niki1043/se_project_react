@@ -61,6 +61,18 @@ function App() {
     setActiveModal("");
   };
 
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -75,7 +87,7 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
-        console.log(newCard);
+        //console.log(newCard);
         setCards([...cards, newCard?.data]);
         handleCloseModal();
       })
@@ -136,8 +148,11 @@ function App() {
         //check if successful response and if jwttoken assigned and store and check if token exists already and close modal
         if (res && res.token) {
           //token only inside res object
+          // console.log(res);
           localStorage.setItem("jwt", res.token);
           const userinfo = checkToken(res.token);
+          setToken(res.token);
+          // console.log(res.token);
           //console.log(userinfo);
           return userinfo;
         } else {
@@ -145,7 +160,7 @@ function App() {
         }
       })
       .then((userinfo) => {
-        console.log(userinfo.data);
+        //console.log(userinfo.data);
         setCurrentUser({
           data: {
             name: userinfo?.data?.name,
@@ -154,6 +169,7 @@ function App() {
             //...userinfo.data,
           },
         });
+        //console.log(token);
         setIsLoggedIn(true);
         handleCloseModal();
         setUserLogInModal(false);
@@ -168,7 +184,7 @@ function App() {
   const handleRegistration = ({ name, avatar, email, password }) => {
     signUp(name, avatar, email, password)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         handleLogin({ email, password });
         handleCloseModal();
         setUserRegisterModal(false);
@@ -312,6 +328,7 @@ function App() {
                 isOpen={activeModal === "create"}
                 onAddItem={handleAddItemSubmit}
                 onClose={handleCloseModal}
+                token={token}
               />
             )}
 

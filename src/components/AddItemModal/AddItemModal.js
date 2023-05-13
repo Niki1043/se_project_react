@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
-const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
+const AddItemModal = ({ isOpen, onAddItem, onClose, token }) => {
   // declare state for each input field (name, imageUrl, weather)
   const [itemName, setItemName] = useState("");
   const [itemImageLink, setItemImageLink] = useState("");
@@ -38,7 +38,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     card.name = itemName;
     card.imageUrl = itemImageLink;
     card.weather = weatherType;
-    onAddItem(card);
+    onAddItem(card, token);
     //console.log(card); //logs values correctly for input
   }
 
