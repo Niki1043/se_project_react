@@ -1,6 +1,9 @@
 import { checkResponse } from "./api";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrniki.mooo.com"
+    : "http://localhost:3001";
 
 // //Check for server response with promise state
 // const checkResponse = (res) => {

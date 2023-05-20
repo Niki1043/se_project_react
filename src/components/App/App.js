@@ -230,6 +230,7 @@ function App() {
           })
           .catch((err) => console.log(err));
   };
+  //console.log(cards);
 
   //Server Requests/useEffect Hooks
   //Get and set weather info and city name for header and weather card
